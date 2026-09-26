@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>うごメモ 混色作成ツール</title>
+  <!-- CSSの読み込み -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <h1>うごメモ 混色作成ツール</h1>
+
+  <div class="control-panel">
+    <!-- 左カラム: 入力・設定 -->
+    <div class="panel-section">
+      <div>
+        <label>目標の色を選択</label>
+        <div style="display: flex; gap: 8px; margin-top: 4px;">
+          <input type="color" id="colorPicker" value="#801b70">
+          <input type="text" id="hexInput" value="#801b70">
+        </div>
+      </div>
+
+      <div>
+        <label>グリッドサイズ</label>
+        <select id="gridSize" style="width: 100%; margin-top: 4px;">
+          <option value="2">2 × 2 (4マス)</option>
+          <option value="3" selected>3 × 3 (9マス)</option>
+          <option value="4">4 × 4 (16マス)</option>
+        </select>
+      </div>
+
+      <!-- 画像ドロップエリア -->
+      <div>
+        <label>画像からスポイト（ドロップまたはクリック）</label>
+        <div class="drop-zone" id="dropZone" style="margin-top: 4px;">
+          <p>ここに画像をドロップ<br>またはクリックして選択</p>
+          <input type="file" id="fileInput" accept="image/*" style="display: none;">
+          <canvas id="imagePreviewCanvas"></canvas>
+        </div>
+      </div>
+    </div>
+
+    <!-- 右カラム: パレット指定 (指定順序) -->
+    <div class="panel-section">
+      <label>使用する色を選択</label>
+      <div class="color-toggle-grid" id="colorToggleGrid"></div>
+    </div>
+  </div>
+
+  <h2>近似候補（上位）</h2>
+  <div class="candidate-grid" id="candidateList"></div>
+
+  <!-- JavaScriptの読み込み -->
+  <script src="script.js"></script>
+</body>
+
+</html>
